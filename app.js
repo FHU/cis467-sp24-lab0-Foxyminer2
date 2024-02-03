@@ -2,6 +2,8 @@ const facts = require('./facts.json')
 
 const express = require('express')
 const app = express()
+app.use(express.static('public'));
+
 
 const PORT = process.env.PORT || "3000"
 
@@ -26,7 +28,9 @@ app.get('/greet', (req, res)=> {
 
 app.get('/math/:num1/:op/:num2', (req, res)=> {
     console.log( req.params )
-    res.send(`${req.params.num1}`)
+    //res.send(`${req.params.num1}`)
+    //res.json( {message: "Hey Dude"} )
+    res.render( 'math', {title:'math', result: 5})
 })
 
 app.get('/pandorasbox', (req, res)=> {
